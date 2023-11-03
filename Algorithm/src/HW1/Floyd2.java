@@ -3,14 +3,23 @@ package HW1;
 public class Floyd2 {
     public static void main(String[] args) {
         // n, W[][], D[][], P[][] 생성 및 초기화
-        int inf = 100_000_000;
+        int inf = 100_000_000;      // 충분히 큰 수를 infinity로 설정함.
         int n = 5;
+        // 교재의 입력 데이터(Figure 3.2)
+//        int[][] W = {
+//                {0, 1, inf, 1, 5},
+//                {9, 0, 3, 2, inf},
+//                {inf, inf, 0, 4, inf},
+//                {inf, inf, 2, 0, 3},
+//                {3, inf, inf, inf, 0}
+//        };
+        // 임의의 자작 데이터
         int[][] W = {
-                {0, 1, inf, 1, 5},
-                {9, 0, 3, 2, inf},
-                {inf, inf, 0, 4, inf},
-                {inf, inf, 2, 0, 3},
-                {3, inf, inf, inf, 0}
+                {0, 10, 5, inf, inf},
+                {inf, 0, 2, inf, inf},
+                {1, 13, 0, inf, inf},
+                {8, inf, inf, 0, 3},
+                {inf, 31, inf, 9, 0}
         };
         int[][] D = new int[n][n];
         int[][] P = new int[n][n];
@@ -42,6 +51,10 @@ public class Floyd2 {
                     }
                 }
             }
+            // 디버깅을 위한 과정 테스트
+//            System.out.println("<<<<<<<<" + (k+1) + ">>>>>>>>>>");
+//            printD(n, D);
+//            printP(n, P);
         }
     }
 
@@ -54,6 +67,7 @@ public class Floyd2 {
     }
 
     static void printD(int n, int[][] D) {
+        System.out.println("D >>");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print(D[i][j] + " ");
@@ -64,12 +78,14 @@ public class Floyd2 {
     }
 
     static void printP(int n, int[][] P) {
+        System.out.println("P >>");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print(P[i][j] + " ");
             }
             System.out.println();
         }
+        System.out.println();
     }
 
 }
