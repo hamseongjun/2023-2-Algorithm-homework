@@ -6,21 +6,21 @@ public class Floyd2 {
         int inf = 100_000_000;      // 충분히 큰 수를 infinity로 설정함.
         int n = 5;
         // 교재의 입력 데이터(Figure 3.2)
-//        int[][] W = {
-//                {0, 1, inf, 1, 5},
-//                {9, 0, 3, 2, inf},
-//                {inf, inf, 0, 4, inf},
-//                {inf, inf, 2, 0, 3},
-//                {3, inf, inf, inf, 0}
-//        };
-        // 임의의 자작 데이터
         int[][] W = {
-                {0, 10, 5, inf, inf},
-                {inf, 0, 2, inf, inf},
-                {1, 13, 0, inf, inf},
-                {8, inf, inf, 0, 3},
-                {inf, 31, inf, 9, 0}
+                {0, 1, inf, 1, 5},
+                {9, 0, 3, 2, inf},
+                {inf, inf, 0, 4, inf},
+                {inf, inf, 2, 0, 3},
+                {3, inf, inf, inf, 0}
         };
+        // 임의의 자작 데이터
+//        int[][] W = {
+//                {0, 10, 5, inf, inf},
+//                {inf, 0, 2, inf, inf},
+//                {1, 13, 0, inf, inf},
+//                {8, inf, inf, 0, 3},
+//                {inf, 31, inf, 9, 0}
+//        };
         int[][] D = new int[n][n];
         int[][] P = new int[n][n];
 
