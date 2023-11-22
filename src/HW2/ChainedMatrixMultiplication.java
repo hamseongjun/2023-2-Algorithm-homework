@@ -1,5 +1,11 @@
 package HW2;
 
+/*
+*
+* d = 행렬들의 열의 수
+* P[i][j] = i부터 j 사이에서 어디를 쪼개야 하는지 (k가 무엇인지)
+* M[i][j] = 실질적인 최솟값을 저장하는 행렬
+ */
 public class ChainedMatrixMultiplication {
     static int n = 6;
     // 교재의 입력 데이터(Example 3.5)
@@ -20,11 +26,11 @@ public class ChainedMatrixMultiplication {
         int[][] M = new int[n+1][n+1];
         for (i = 1; i <= n; i++)
             M[i][i] = 0;
-        for (diagonal = 1; diagonal <= n-1; diagonal++) {
-            for (i = 1; i <= n - diagonal; i++) {
-                j = i + diagonal;
+        for (diagonal = 1; diagonal <= n-1; diagonal++) {       // 1. 대각선 방향으로 계산하는 전체 반복문
+            for (i = 1; i <= n - diagonal; i++) {               // 2. i = 대조군의 행 (n - diagonal개의 대조군 존재)
+                j = i + diagonal;                               //    j = 대조군의 열 (오른쪽 아래로 이동해야하므로 i와 같이 증가)
                 M[i][j] = Integer.MAX_VALUE;
-                for (k = i; k <= j - 1; k++) {
+                for (k = i; k <= j - 1; k++) {                  // 3. k = 비교군의 위치를 1씩 이동시키는 반복문.
                     if (M[i][j] > M[i][k] + M[k + 1][j] + d[i - 1] * d[k] * d[j]) {
                         M[i][j] = M[i][k] + M[k + 1][j] + d[i - 1] * d[k] * d[j];
                         P[i][j] = k;
@@ -39,11 +45,11 @@ public class ChainedMatrixMultiplication {
     static void order(int i, int j) {
         if (i == j) System.out.print("A" + i);
         else {
-            int k = P[i][j];
-            System.out.print("(");
-            order(i, k);
-            order(k+1, j);
-            System.out.print(")");
+            int k = P[i][j];            // k = 어디를 쪼개야 돼?
+            System.out.print("(");      // 일단 괄호 먼저 열고
+            order(i, k);                // k 앞 부분
+            order(k+1, j);           // k 뒷 부분
+            System.out.print(")");      // 괄호 닫고
         }
     }
 
