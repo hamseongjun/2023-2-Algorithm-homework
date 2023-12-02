@@ -6,6 +6,7 @@ public class Dijkstra {
     public static void main(String[] args) {
         int inf = 100_000_000;      // 적당히 큰 수를 무한대로 설정.
         int n = 5;                  // vertex 5개인 그래프
+
         // ########### 교재의 입력 데이터(Figure 4.8) ###########
         int[][] W = {               // 각각의 행,열은 1부터 시작함. 0행과 0열은 안 씀.
                 {0, 0, 0, 0, 0, 0},
@@ -17,6 +18,14 @@ public class Dijkstra {
         };
 
         // ########### 임의의 자작 입력 데이터 ############
+//        int[][] W = {               // 각각의 행,열은 1부터 시작함. 0행과 0열은 안 씀.
+//                {0, 0, 0, 0, 0, 0},
+//                {0, 0, 5, 7, 5, 4},
+//                {0, inf, 0, inf, inf, 1},
+//                {0, inf, 2, 0, inf, 3},
+//                {0, inf, inf, inf, 0, 2},
+//                {0, inf, inf, inf, inf, 0}
+//        };
 
         ArrayList<int[]> F = new ArrayList<>();
         dijkstra(n, W, F);
